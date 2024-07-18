@@ -160,8 +160,8 @@ export function gameLoop(act){
 // is controlled by loop lengths.
 export function loopTimers(){
     //Here come any speed modifiers not related to accelerated time.
-	//20倍基本速率
-    let modifier = 0.05;
+	//10倍基本速率
+    let modifier = 0.1;
     if (global.race['slow']){
         modifier *= 1 + (traits.slow.vars()[0] / 100);
     }
@@ -201,12 +201,12 @@ export function addATime(currentTimestamp){
             global.settings.at = 0;
         }
         // Accelerated time is added only if it is over the threshold.
-        if (timeDiff >= 120000){
+        if (timeDiff >= 0){
             const timers = loopTimers();
             const gameDayDuration = timers.baseLongTimer;
             // The number of days during which the time is accelerated (at) should take as long as 2 / 3 of paused time.
             // at * gameDayDuration / timeAccelerationFactor = 2 / 3 * timeDiff
-            global.settings.at += Math.floor(2 / 3 * timeDiff * timers.timeAccelerationFactor / gameDayDuration);
+            global.settings.at += Math.floor(timeDiff * timers.timeAccelerationFactor / gameDayDuration);
         }
         // Accelerated time is capped at 8*60*60/2.5 game days.
 	//删除了最大加速时间限制
