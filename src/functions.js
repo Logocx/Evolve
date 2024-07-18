@@ -159,8 +159,9 @@ export function gameLoop(act){
 // Note that these values are not tied to the time_multiplier from fastLoop - the relative speed of time in the game
 // is controlled by loop lengths.
 export function loopTimers(){
-    // Here come any speed modifiers not related to accelerated time.
-    let modifier = 1.0;
+    Here come any speed modifiers not related to accelerated time.
+	//20倍基本速率
+    let modifier = 0.05;
     if (global.race['slow']){
         modifier *= 1 + (traits.slow.vars()[0] / 100);
     }
@@ -175,7 +176,8 @@ export function loopTimers(){
     // Long loop (game day) takes 5000ms without any modifiers.
     const baseLongTimer = 20 * webWorkerMainTimer;
     // The constant by which the time is accelerated when atrack.t > 0.
-    const timeAccelerationFactor = 10;
+    const timeAccelerationFactor = 20;
+	//20倍加速速率
 
     const aTimeMultiplier = atrack.t > 0 ? 1 / timeAccelerationFactor : 1;
     return {
@@ -207,9 +209,7 @@ export function addATime(currentTimestamp){
             global.settings.at += Math.floor(2 / 3 * timeDiff * timers.timeAccelerationFactor / gameDayDuration);
         }
         // Accelerated time is capped at 8*60*60/2.5 game days.
-        if (global.settings.at > 11520){
-            global.settings.at = 11520;
-        }
+	//删除了最大加速时间限制
         atrack.t = global.settings.at;
         // Updating the current date so that it won't be counted twice (e.g., when unpausing).
         global.stats.current = currentTimestamp;
