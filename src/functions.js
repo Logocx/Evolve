@@ -159,7 +159,7 @@ export function gameLoop(act){
 // Note that these values are not tied to the time_multiplier from fastLoop - the relative speed of time in the game
 // is controlled by loop lengths.
 export function loopTimers(){
-    Here come any speed modifiers not related to accelerated time.
+    //Here come any speed modifiers not related to accelerated time.
 	//20倍基本速率
     let modifier = 0.05;
     if (global.race['slow']){
