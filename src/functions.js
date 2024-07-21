@@ -1347,7 +1347,7 @@ export function challenge_multiplier(value,type,decimals,inputs){
     }
     let universe = inputs.uni || global.race.universe;
 
-    if (universe === 'micro'){ value = value * 0.25; }
+    if (universe === 'micro'){ value = value * 40; } //微型宇宙改为*40
     if (universe === 'antimatter'){ value = value * 1.1; }
     if (universe === 'heavy' && type !== 'mad'){
         switch (challenge_level){
@@ -1392,7 +1392,7 @@ export function getResetConstants(type, inputs){
         k_inc: 1000000,
         k_mult: 100,
         phage_mult: 0,
-        plasmid_cap: 150,
+        plasmid_cap: 15000000,
     }
 
     switch (type){
@@ -1404,7 +1404,7 @@ export function getResetConstants(type, inputs){
             if (inputs.synth){
                 rc.pop_divisor = 5;
                 rc.k_inc = 125000;
-                rc.plasmid_cap = 100;
+                rc.plasmid_cap = 15000000;
             }
             break;
         case 'cataclysm':
@@ -1413,14 +1413,14 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 50000;
             rc.k_mult = 1.015;
             rc.phage_mult = 1;
-            rc.plasmid_cap = 400;
+            rc.plasmid_cap = 15000000;
             break;
         case 'ai':
             rc.pop_divisor = 2.5;
             rc.k_inc = 45000;
             rc.k_mult = 1.014;
             rc.phage_mult = 2;
-            rc.plasmid_cap = 600;
+            rc.plasmid_cap = 15000000;
             break;
         case 'vacuum':
         case 'bigbang':
@@ -1428,7 +1428,7 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 40000;
             rc.k_mult = 1.012;
             rc.phage_mult = 2.5;
-            rc.plasmid_cap = 800;
+            rc.plasmid_cap = 15000000
             break;
         case 'ascend':
         case 'terraform':
@@ -1436,28 +1436,28 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 30000;
             rc.k_mult = 1.008;
             rc.phage_mult = 4;
-            rc.plasmid_cap = 2000;
+            rc.plasmid_cap = 15000000;
             break;
         case 'matrix':
             rc.pop_divisor = 1.5;
             rc.k_inc = 32000;
             rc.k_mult = 1.01;
             rc.phage_mult = 3.2;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 15000000;
             break;
         case 'retired':
             rc.pop_divisor = 1.15;
             rc.k_inc = 32000;
             rc.k_mult = 1.006;
             rc.phage_mult = 3.2;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 15000000;
             break;
         case 'eden':
             rc.pop_divisor = 1;
             rc.k_inc = 18000;
             rc.k_mult = 1.004;
             rc.phage_mult = 2.5;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 15000000;
             break;
         default:
             rc.unknown = true;
@@ -1539,12 +1539,7 @@ export function calcPrestige(type,inputs){
 
         gains.plasmid = challenge_multiplier(new_plasmid,type,false,inputs);
 
-        if (!inputs.rawPlasmids && gains.plasmid > plasmid_cap){
-            let overflow = gains.plasmid - plasmid_cap;
-            gains.plasmid = plasmid_cap;
-            overflow = Math.floor(overflow / (overflow + plasmid_cap) * plasmid_cap);
-            gains.plasmid += overflow;
-        }
+        //删除更改质粒上限部分
     }
     else {
         gains.plasmid = inputs.plas;
