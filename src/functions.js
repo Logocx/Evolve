@@ -1393,7 +1393,7 @@ export function getResetConstants(type, inputs){
         k_inc: 1000000,
         k_mult: 100,
         phage_mult: 0,
-        plasmid_cap: 150,
+        plasmid_cap: 1500000,
     }
 
     switch (type){
@@ -1405,7 +1405,7 @@ export function getResetConstants(type, inputs){
             if (inputs.synth){
                 rc.pop_divisor = 5;
                 rc.k_inc = 125000;
-                rc.plasmid_cap = 100;
+                rc.plasmid_cap = 1000000;
             }
             break;
         case 'cataclysm':
@@ -1414,7 +1414,7 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 50000;
             rc.k_mult = 1.015;
             rc.phage_mult = 1;
-            rc.plasmid_cap = 400;
+            rc.plasmid_cap = 4000000;
             break;
         case 'ai':
             rc.pop_divisor = 2.5;
@@ -1429,7 +1429,7 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 40000;
             rc.k_mult = 1.012;
             rc.phage_mult = 2.5;
-            rc.plasmid_cap = 800;
+            rc.plasmid_cap = 8000000;
             break;
         case 'ascend':
         case 'terraform':
@@ -1437,28 +1437,28 @@ export function getResetConstants(type, inputs){
             rc.k_inc = 30000;
             rc.k_mult = 1.008;
             rc.phage_mult = 4;
-            rc.plasmid_cap = 2000;
+            rc.plasmid_cap = 20000000;
             break;
         case 'matrix':
             rc.pop_divisor = 1.5;
             rc.k_inc = 32000;
             rc.k_mult = 1.01;
             rc.phage_mult = 3.2;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 18000000;
             break;
         case 'retired':
             rc.pop_divisor = 1.15;
             rc.k_inc = 32000;
             rc.k_mult = 1.006;
             rc.phage_mult = 3.2;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 18000000;
             break;
         case 'eden':
             rc.pop_divisor = 1;
             rc.k_inc = 18000;
             rc.k_mult = 1.004;
             rc.phage_mult = 2.5;
-            rc.plasmid_cap = 1800;
+            rc.plasmid_cap = 18000000;
             break;
         default:
             rc.unknown = true;
