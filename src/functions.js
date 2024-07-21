@@ -1347,7 +1347,8 @@ export function challenge_multiplier(value,type,decimals,inputs){
     }
     let universe = inputs.uni || global.race.universe;
 
-    if (universe === 'micro'){ value = value * 0.25; }
+    if (universe === 'micro'){ value = value * 40; }
+	//将微型宇宙改为40倍质粒宇宙
     if (universe === 'antimatter'){ value = value * 1.1; }
     if (universe === 'heavy' && type !== 'mad'){
         switch (challenge_level){
