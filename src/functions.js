@@ -1583,7 +1583,7 @@ export function calcPrestige(type,inputs){
         if (type === 'ascend' || type === 'terraform'){
             switch (universe){
                 case 'micro':
-                    harmony *= 0.25;
+                    harmony *= 40;
                     break;
                 case 'heavy':
                     harmony *= 1.2;
