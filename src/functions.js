@@ -1540,12 +1540,7 @@ export function calcPrestige(type,inputs){
 
         gains.plasmid = challenge_multiplier(new_plasmid,type,false,inputs);
 
-        if (!inputs.rawPlasmids && gains.plasmid > plasmid_cap){
-            let overflow = gains.plasmid - plasmid_cap;
-            gains.plasmid = plasmid_cap;
-            overflow = Math.floor(overflow / (overflow + plasmid_cap) * plasmid_cap);
-            gains.plasmid += overflow;
-        }
+       //删除了计算质粒上限的函数
     }
     else {
         gains.plasmid = inputs.plas;
